@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/rl_root_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPageBg">
+
+        <LinearLayout
+            android:id="@+id/ll_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPageBg"
+            android:orientation="vertical">
+
+            <com.blackcat.example.view.TitleBar
+                android:id="@+id/titleBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--加载失败-->
+                <LinearLayout
+                    android:id="@+id/ll_error_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/img_err"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/load_error" />
+
+                    <TextView
+                        style="@style/normal_red_23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="37dp"
+                        android:text="哎呀，出错了！" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/load_error_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="72dp">
+
+                        <TextView
+                            style="@style/normal_666_12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="可能原因："
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/normal_666_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="1、网络信号弱"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/normal_666_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="2、找不到请求页面"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/normal_666_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="3、访问地址维护中"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <!--android:layout_centerHorizontal="true"-->
+                <!--加载中..-->
+                <LinearLayout
+                    android:id="@+id/ll_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/img_progress"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/base_load_anim" />
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:text="努力加载中..."-->
+                    <!--android:textColor="@color/colorTabText"-->
+                    <!--android:textSize="14sp" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View style="@style/horizontalLine_1dp" />
+
+                    <ImageView
+                        android:id="@+id/img_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:src="@mipmap/base_empty" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

@@ -1,0 +1,22 @@
+ext {
+    android = [
+
+            compileSdkVersion    : 25,
+            minSdkVersion        : 16,
+            targetSdkVersion     : 25,
+            versionCode          : 16,
+            versionName          : "2.3.6",
+            androidSupportVersion: "25.3.1",
+            constraintVersion    : "1.0.2",
+    ]
+
+    dependencies = [
+            "appcompat-v7": "com.android.support:appcompat-v7:${android["androidSupportVersion"]}",
+            "support-v4"  : "com.android.support:support-v4:${android["androidSupportVersion"]}",
+            "design"      : "com.android.support:design:${android["androidSupportVersion"]}",
+            "cardview-v7" : "com.android.support:cardview-v7:${android["androidSupportVersion"]}",
+            "recyclerview-v7": "com.android.support:recyclerview-v7:${android["androidSupportVersion"]}",
+            "design"      : "com.android.support:design:${android["androidSupportVersion"]}",
+    ]
+
+}

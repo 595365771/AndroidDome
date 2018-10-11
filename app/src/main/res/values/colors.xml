@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!--标题栏颜色-->
+    <color name="colorTheme">#484759</color>
+    <!--页面背景的颜色-->
+    <color name="colorPageBg">#EEEEEE</color>
+    <!--标题栏字体颜色-->
+    <color name="colorTitle">#cccccc</color>
+    <!--popupWindow 背景色-->
+    <color name="colorPopBg">#99000000</color>
+    <!--tab字体颜色-->
+    <color name="colorTabGray">#333333</color>
+    <!--tab字体颜色-->
+    <color name="colorTabRed">#ff6666</color>
+
+    <color name="colorBlueF8">#EFF8FF</color>
+    <!--活动标签字体颜色-->
+    <color name="color47647A">#47647A</color>
+
+    <!--白色-->
+    <color name="colorWhite">#ffffff</color>
+    <!--蓝色-->
+    <color name="colorBlue">#4DA3E0</color>
+    <!--红色-->
+    <color name="colorRed">#F45D64</color>
+    <!--红色-->
+    <color name="colorRed99">#99F45D64</color>
+    <!--粉红色背景-->
+    <color name="colorPinkBg">#FFF6F6</color>
+    <color name="color484">#484759</color>
+    <color name="color999">#999999</color>
+    <!--分割线-->
+    <color name="colorLine">#E6E6E6</color>
+    <!--tab标签栏文字的颜色-->
+    <color name="colorTabText">#585858</color>
+    <!--正文文字颜色-->
+    <color name="colorContent">#ff333333</color>
+    <!--水波纹或5.0以下选择器颜色-->
+    <color name="tabBackground">#777D7D7D</color>
+    <color name="color333">#333</color>
+    <color name="color666">#666</color>
+    <color name="colorddd">#dddddd</color>
+    <color name="color_tran60">#96000000</color>
+    <color name="color444">#444444</color>
+    <color name="tran">#00000000</color>
+    <color name="details_submit">#4da3e0</color>
+    <color name="gray_bg">#BBC3D1</color>
+
+
 </resources>
