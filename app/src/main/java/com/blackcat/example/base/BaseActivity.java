@@ -89,8 +89,6 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
     }
 
 
-
-
     protected void showLoading() {
         if (llProgressBar.getVisibility() != View.VISIBLE) {
             llProgressBar.setVisibility(View.VISIBLE);

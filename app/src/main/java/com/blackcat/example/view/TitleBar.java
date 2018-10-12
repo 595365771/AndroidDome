@@ -20,9 +20,9 @@ import com.blackcat.example.utils.DensityUtil;
 
 public class TitleBar extends RelativeLayout {
     // 这里使用0x282828相当于0x00282828
-    private final int B_LEFT_TEXT_COLOR_DEFAULT = 0xFFCCCCCC;
-    private final int B_RIGHT_TEXT_COLOR_DEFAULT = 0xFFCCCCCC;
-    private final int ETV_TITLE_TEXT_COLOR_DEFAULT = 0xFFCCCCCC;
+    private final int B_LEFT_TEXT_COLOR_DEFAULT = 0xFF484759;
+    private final int B_RIGHT_TEXT_COLOR_DEFAULT = 0xFF484759;
+    private final int ETV_TITLE_TEXT_COLOR_DEFAULT = 0xFF484759;
     private Button b_left;
     private Button b_right;
     private TextView tv_title;

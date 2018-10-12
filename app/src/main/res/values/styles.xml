@@ -8,9 +8,10 @@
     <style name="MyThemeRed" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!--选中状态icon的颜色和字体颜色-->
-        <item name="colorPrimary">@color/colorTheme</item>
-        <item name="colorPrimaryDark">@color/colorTheme</item>
-        <item name="colorAccent">@color/colorTheme</item>
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
+        <item name="colorAccent">@color/colorWhite</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <!--水平分隔线-->
@@ -199,8 +200,8 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="normal_484759_15">
-        <item name="android:textSize">15sp</item>
+    <style name="normal_484759_14">
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color484</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -234,7 +235,11 @@
         <item name="android:textColor">@color/colorTabGray</item>
         <item name="android:textStyle">normal</item>
     </style>
-
+    <style name="normal_333_16">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTabGray</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="normal_333_14">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorTabGray</item>
