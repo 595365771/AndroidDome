@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.blackcat.example.base.BaseActivity;
+import com.blackcat.example.base.baseadapter.OnItemClickListener;
 import com.blackcat.example.base.baseadapter.setting.DividerListItemDecoration;
 import com.blackcat.example.databinding.ActivityMainBinding;
+import com.blackcat.example.ui.TouchEventActivity;
 import com.blackcat.example.utils.CommonUtils;
 import com.blackcat.example.utils.DensityUtil;
 
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private MainModelView viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +30,19 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         getTitleBar().setTitleText("BlackCat");
         getTitleBar().setB_leftHide(true);
     }
+
     private void initAdapter() {
         viewModel = new MainModelView();
         MainAdapter mainAdapter = new MainAdapter();
         mainAdapter.setData(viewModel.mainBeans);
         bindingView.rvMain.setLayoutManager(new LinearLayoutManager(this));
-        bindingView.rvMain.addItemDecoration(new DividerListItemDecoration(this,LinearLayoutManager.HORIZONTAL, DensityUtil.dip2px(0), CommonUtils.getColor(R.color.colorWhite)));
+        bindingView.rvMain.addItemDecoration(new DividerListItemDecoration(this, LinearLayoutManager.HORIZONTAL, DensityUtil.dip2px(0), CommonUtils.getColor(R.color.colorWhite)));
         bindingView.rvMain.setAdapter(mainAdapter);
-
+        mainAdapter.setOnItemClickListener(new OnItemClickListener<MainBean>() {
+            @Override
+            public void onClick(MainBean mainBean, int position) {
+                turnToNextActivity(TouchEventActivity.class);
+            }
+        });
     }
 }

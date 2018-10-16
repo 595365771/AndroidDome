@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:padding="10dp"
+            tools:context="com.blackcat.example.ui.TouchEventActivity">
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1、View事件方法的执行顺序如下" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="dispatchTouchEvent->onTouch->onTouchEvent->onClick，如果前面的一个方法返回true后面的方法就都不会执行了" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="2、onTouch和onTouchEvent有什么区别，又该如何使用？" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="从源码中可以看出，这两个方法都是在View的dispatchTouchEvent中调用的，onTouch优先于onTouchEvent执行。如果在onTouch方法中通过返回true将事件消费掉，onTouchEvent将不会再执行。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="另外需要注意的是，onTouch能够得到执行需要两个前提条件，第一mOnTouchListener的值不能为空，第二当前点击的控件必须是enable的。因此如果你有一个控件是非enable的，那么给它注册onTouch事件将永远得不到执行。对于这一类控件，如果我们想要监听它的touch事件，就必须通过在该控件中重写onTouchEvent方法来实现。" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="3、关于imageView" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text='imageView 没有注册 onClick 的时候 onTouch只执行down 按下的动作,注册了onClick后 up 和 move 就可以正常执行了。如果只在XML 里面添加了 android:onClick="true" 而没有实现 true方法会崩溃报错 找不到true方法。如果我们不想给ImageView 添加onClick 又想执行 down up 和 move方法需要给ImageView 的onTouch方法返回true，或者在Xml里面设置android:clickable="true"' />
+
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="下面的自定义控件重写了View的onTouchEvent方法打印了Log，可以在控制台查看方法执行顺序" />
+
+            <Switch
+                android:id="@+id/sw_ontouch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:showText="true"
+                android:switchMinWidth="60dp"
+                android:text="关闭View的onTouch方法返回false，开启返回true"
+                android:textColor="@color/colorBlue" />
+
+            <com.blackcat.example.view.TouchEventView
+                android:id="@+id/tev_test"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorBlue" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="新建一个ViewGroup，再新建一个View，还有一个Activity，分别重写他们的dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent，添加ViewGroup和View的onTouch和onClick方法。" />
+
+            <com.blackcat.example.view.TouchEventViewGroup
+                android:id="@+id/tevg_vg"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@color/color666"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.blackcat.example.view.TouchEventView
+                    android:id="@+id/tev_vg"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@color/color333" />
+            </com.blackcat.example.view.TouchEventViewGroup>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
