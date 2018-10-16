@@ -96,11 +96,75 @@
                 android:layout_marginTop="10dp" />
 
             <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="触摸事件U型图" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/touch_event_u_img" />
+
+            <TextView
                 style="@style/normal_333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="新建一个ViewGroup，再新建一个View，还有一个Activity，分别重写他们的dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent，添加ViewGroup和View的onTouch和onClick方法。" />
+                android:text="如果我们没有对控件里面的方法进行重写或更改返回值，而直接用super调用父类的默认实现，那么整个事件流向应该是从Activity---->ViewGroup--->View 从上往下调用dispatchTouchEvent方法，一直到叶子节点（View）的时候，再由View--->ViewGroup--->Activity从下往上调用onTouchEvent方法。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="dispatchTouchEvent 和 onTouchEvent 一旦return true,事件就停止传递了（到达终点）（没有谁能再收到这个事件）。看下图中只要return true事件就没再继续传下去了，对于return true我们经常说事件被消费了，消费了的意思就是事件走到这里就是终点，不会往下传，没有谁能再收到这个事件了。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="dispatchTouchEvent 和 onTouchEvent return false的时候事件都回传给父控件的onTouchEvent处理。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="对于dispatchTouchEvent 返回 false 的含义应该是：事件停止往子View传递和分发同时开始往父控件回溯（父控件的onTouchEvent开始从下往上回传直到某个onTouchEvent return true），事件分发机制就像递归，return false 的意义就是递归停止然后开始回溯。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="对于onTouchEvent return false 就比较简单了，它就是不消费事件，并让事件继续往父控件的方向从下往上流动。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="onInterceptTouchEvent Intercept 的意思就拦截，每个ViewGroup每次在做分发的时候，问一问拦截器要不要拦截（也就是问问自己这个事件要不要自己来处理）如果要自己处理那就在onInterceptTouchEvent方法中 return true就会交给自己的onTouchEvent的处理，如果不拦截就是继续往子控件往下传。默认是不会去拦截的，因为子View也需要这个事件，所以onInterceptTouchEvent拦截器return super.onInterceptTouchEvent()和return false是一样的，是不会拦截的，事件会继续往子View的dispatchTouchEvent传递。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Activity 的dispatchTouchEvent，只有return super.dispatchTouchEvent(ev) 才是往下走，返回true 或者 false 事件就被消费了（终止传递）。" />
+
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="下面的Dome新建一个ViewGroup，再新建一个View，还有一个Activity，分别重写他们的dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent，添加ViewGroup和View的onTouch和onClick方法。并添加了Log可以再控制台查看方法执行顺序" />
 
             <com.blackcat.example.view.TouchEventViewGroup
                 android:id="@+id/tevg_vg"
@@ -118,6 +182,7 @@
                     android:layout_height="130dp"
                     android:background="@color/color333" />
             </com.blackcat.example.view.TouchEventViewGroup>
+
 
         </LinearLayout>
     </ScrollView>
