@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:padding="10dp"
+            tools:context="com.blackcat.example.ui.touchevent.TouchEventActivity">
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="进程和线程" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="进程是处于运行中的程序，并且具有一定的独立性，是系统进行资源分配和调度的一个独立单位。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="一般包含如下三个特征：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、独立性：进程是系统中独立存在的实体，它可以拥有自己独立的资源，每一个进程都拥有自己私有的地址空间，在没有经过进程本身允许的情况下一个用户进程不能直接访问其他进程 。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、动态性：和程序相比进程有自己的生命周期和各种不同的状态。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="3、并发性：多个进程可以在单个处理器上并发执行，多个进程之间不会互相影响。（理论上一个CPU同一时间只能有一个进程在执行，不断在这些进程之间轮换执行）" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="线程是进程的组成部分，一个进程可以拥有多个线程，一个线程必须拥有一个父进程。线程可以拥有自己的堆栈、自己的程序计数器和自己的局部变量，但不拥有系统资源，它和进程的其他线程共享该进程的资源。这样使变成更方便，但必须更加小心，因为要确保线程不会影响同一进程里面的其他线程。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="线程的三种创建方式" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、继承Thread类创建线程。" />
+
+            <Button
+                android:id="@+id/btn_mythread"
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="点击执行" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、实现Runnable接口创建线程。" />
+
+            <Button
+                android:id="@+id/btn_myrunnable"
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="点击执行" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="3、实使用Callable和Future创建线程" />
+
+            <Button
+                android:id="@+id/btn_mycallable"
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="点击执行" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="三种创建方式的对比" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="采用Runnable和Callable接口方式创建优缺点：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、线程类只实现了Runnable或Callable接口还能继承其他类" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、多个线程可以同享一个target对象，非常适合多个相同线程来处理同一份资源，从而可以将CPU、代码、和数据分开，形成清晰的模型较好的提现了面向对象的思想" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="3、劣势是编程比较复杂，如果要访问当前线程必须使用Tread.currentTread()方法" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="采用继承Tread类的方式创建多线程的优缺点：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="1、已经继承了Tread不能再继承其他类" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="2、优势是编写简单，访问当前线程直接使用this就可以了。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

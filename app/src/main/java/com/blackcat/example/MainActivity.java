@@ -7,12 +7,10 @@ import com.blackcat.example.base.BaseActivity;
 import com.blackcat.example.base.baseadapter.OnItemClickListener;
 import com.blackcat.example.base.baseadapter.setting.DividerListItemDecoration;
 import com.blackcat.example.databinding.ActivityMainBinding;
-import com.blackcat.example.ui.TouchEventActivity;
+import com.blackcat.example.ui.thread.ThreadActivity;
+import com.blackcat.example.ui.touchevent.TouchEventActivity;
 import com.blackcat.example.utils.CommonUtils;
 import com.blackcat.example.utils.DensityUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private MainModelView viewModel;
@@ -41,7 +39,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         mainAdapter.setOnItemClickListener(new OnItemClickListener<MainBean>() {
             @Override
             public void onClick(MainBean mainBean, int position) {
-                turnToNextActivity(TouchEventActivity.class);
+                switch (position){
+                    case 0:
+                        turnToNextActivity(TouchEventActivity.class);
+                        break;
+                    case 1:
+                        turnToNextActivity(ThreadActivity.class);
+                        break;
+                }
+
             }
         });
     }

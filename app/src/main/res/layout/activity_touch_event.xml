@@ -15,7 +15,7 @@
             android:background="@color/colorWhite"
             android:orientation="vertical"
             android:padding="10dp"
-            tools:context="com.blackcat.example.ui.TouchEventActivity">
+            tools:context="com.blackcat.example.ui.touchevent.TouchEventActivity">
 
             <TextView
                 style="@style/normal_333_16"

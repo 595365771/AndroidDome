@@ -1,4 +1,4 @@
-package com.blackcat.example.ui;
+package com.blackcat.example.ui.touchevent;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;

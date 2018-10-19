@@ -18,8 +18,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.blackcat.example.ui.TouchEventActivity"
+            android:name="com.blackcat.example.ui.touchevent.TouchEventActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.blackcat.example.ui.thread.ThreadActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
