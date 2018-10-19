@@ -21,9 +21,40 @@ public class ThreadActivity extends BaseActivity<ActivityThreadBinding> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread);
         showContentView();
-
         initTitle();
         initListener();
+    }
+
+
+    private void initTitle() {
+        getTitleBar().setTitleText("Thread");
+        getTitleBar().setB_leftOnClick(new PerfectClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void initListener() {
+        bindingView.btnMythread.setOnClickListener(new PerfectClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                CreateThread();
+            }
+        });
+        bindingView.btnMyrunnable.setOnClickListener(new PerfectClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                CreateRunnable();
+            }
+        });
+        bindingView.btnMycallable.setOnClickListener(new PerfectClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                CreateCallable();
+            }
+        });
     }
 
     /**
@@ -59,37 +90,5 @@ public class ThreadActivity extends BaseActivity<ActivityThreadBinding> {
         }
 
     }
-
-    private void initTitle() {
-        getTitleBar().setTitleText("Thread");
-        getTitleBar().setB_leftOnClick(new PerfectClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    private void initListener() {
-        bindingView.btnMythread.setOnClickListener(new PerfectClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                CreateThread();
-            }
-        });
-        bindingView.btnMyrunnable.setOnClickListener(new PerfectClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                CreateRunnable();
-            }
-        });
-        bindingView.btnMycallable.setOnClickListener(new PerfectClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                CreateCallable();
-            }
-        });
-    }
-
 
 }

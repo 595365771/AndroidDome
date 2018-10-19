@@ -184,6 +184,88 @@
                 style="@style/horizontalLine_1dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="线程的生命周期" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="新建状态" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="当程序使用new关键字创建了一个线程后线程就处于新建状态，这时和其他Java类一样，虚拟机只为其分配内存空间，初始化其成员变量的值，线程对象没有表现出任何线程的动态特征，程序也不会执行线程的执行体" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="就绪状态" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="线程对象调用 了Start()方法后线程处于就绪状态，虚拟节会为其创建方法调用栈和程序计数器，处于这个状态的线程还没有开始运行，只是表示可以开始运行了，何时运行取决于JVM里线程调度器的调度。\n注意：\n1、启动线程不能直接调用线程run()方法，否则系统会把线程对象当成一个普通的对象。\n2、已经启动的线程不能再调用start()方法" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="运行状态" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="线程对象调用 了Start()方法后线程处于就绪状态，虚拟节会为其创建方法调用栈和程序计数器，处于这个状态的线程还没有开始运行，只是表示可以开始运行了，何时运行取决于JVM里线程调度器的调度。\n注意：\n1、启动线程不能直接调用线程run()方法，否则系统会把线程对象当成一个普通的对象。\n2、已经启动的线程不能再调用start()方法" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="阻塞状态" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、线程调用了sleep()方法主动放弃所占用的处理器资源\n2、线程调用了一个阻塞式的IO方法，在该方法返回之前，该线程处于阻塞状态\n3、线程视图获得一个同步监视器，但是该监视器被其他线程持有\n4、线程在等待某个通知（notify）\n5、程序调用了线程的suspend方法将线程挂起，这个方法容易造成死锁，所以尽量避免使用。（使用resume()方法后进入就绪状态）" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="当前正在执行的线程被阻塞后，其他线程会获得执行的机会，被阻塞的线程会在合适的时候进去就绪状态，而不是运行状态，也就是说被阻塞的线程，解除阻塞后必须等待线程调取器再次调度它" />
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="线程死亡" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、run()或call()方法执行完，线程正常结束\n2、线程抛出一个未捕获的Exception或Error\n3、直接调用线程的stop()方法结束线程，容易导致死锁，不推荐使用\n注意：\n1、主线程死亡后其他线程不受影响，一旦子线程启动起来就和主线程拥有一样的地位\n2、线程死亡后不能再调用start()方法来从新启动"/>
         </LinearLayout>
     </ScrollView>
 </layout>
