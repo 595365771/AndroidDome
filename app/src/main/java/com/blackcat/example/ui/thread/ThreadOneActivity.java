@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.blackcat.example.R;
 import com.blackcat.example.base.BaseActivity;
-import com.blackcat.example.databinding.ActivityThreadBinding;
+import com.blackcat.example.databinding.ActivityThreadOneBinding;
 import com.blackcat.example.ui.thread.chlid.MyCallable;
 import com.blackcat.example.ui.thread.chlid.MyRunnable;
 import com.blackcat.example.ui.thread.chlid.MyThread;
@@ -15,11 +15,11 @@ import com.blackcat.example.utils.PerfectClickListener;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-public class ThreadOneActivity extends BaseActivity<ActivityThreadBinding> {
+public class ThreadOneActivity extends BaseActivity<ActivityThreadOneBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thread);
+        setContentView(R.layout.activity_thread_one);
         showContentView();
         initTitle();
         initListener();
@@ -27,7 +27,7 @@ public class ThreadOneActivity extends BaseActivity<ActivityThreadBinding> {
 
 
     private void initTitle() {
-        getTitleBar().setTitleText("Thread");
+        getTitleBar().setTitleText("Thread(一)");
         getTitleBar().setB_leftOnClick(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {

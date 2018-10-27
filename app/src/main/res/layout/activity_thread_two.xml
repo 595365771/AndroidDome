@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:padding="10dp"
+            tools:context="com.blackcat.example.ui.touchevent.TouchEventActivity">
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="join线程" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Thread 提供了一个线程等待其他线程完成的方法，当在某个程序执行流中调用其他线程的join方法时，调用线程将被阻塞，直到被join()方法加入的join线程执行完毕。\n通常由使用线程的的程序调用，将一个大问题分成许多小问题，每个小问题分配一个线程，等他们都执行完再调用主线程来进一步处理。join方法必须在start之后调用才有效。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="join()方法的三种重载：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、join()：等待被join的线程执行完\n2、join(long millis):  等待被join的线程的最长时间为millis毫秒，如果时间到了还没执行为则不再等待\n3、join(long millis,int nanos):  等待被join的线程最长时间为 millis毫秒加nanos微妙" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Dome 创建了threadOne和threadTwo两个子线程在主线程中执行，并在两个子线程启动后在主线程打印了一行log\n正常情况下主线程打印的log会先打印，然后两个子线程并发执行。但我们调用了threaOne的join方法，执行顺序就会变成threaOne线程先执行完后其他线程才获得执行机会。" />
+
+            <Button
+                android:id="@+id/btn_join"
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="点击执行" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="从源码中可以看到：join方法的原理就是调用相应线程的wait方法进行等待操作的，例如A线程中调用了B线程的join方法，则相当于在A线程中调用了B线程的wait方法，当B线程执行完（或者到达等待时间），B线程会自动调用自身的notifyAll方法唤醒A线程，从而达到同步的目的。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="后台线程" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="为其他线程提供服务的线程称为后台线程，又称为守护线程或精灵线程，例如JVM的垃圾回收线程\n后台线程有个特征：如果所有的前台线程死亡后台线程会自动死亡。\n调用Tread对象的setDaemon()方法可以将线程设置为后台线程，设置后台线程必须在线程启动前设置，也就是在start()方法前。\nThread对象还提供一个isDaemon()方法来判断线程是不是后台线程。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="线程睡眠：sleep" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="如果需要让当前正在执行的线程暂停一段时间，并进入阻塞状态可以调用sleep()方法。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="sleep()方法的两种重载方式：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、static void sleep(long millis):让当前执行的线程暂停millis毫秒，进入阻塞状态。该方法受系统计时器和线程调度器的精度和准确度的影响。\n2、static void sleep(long millis,  int nanos):让当线程暂停millis毫秒加nanos微妙，进入阻塞状态。该方法受系统计时器和线程调度器的精度和准确度的影响。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="当线程调用sleep进去阻塞状态后即使当前没有可执行的线程，这个线程也不会执行。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="线程让步：yield" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="yield()方法是一个和sleep()方法很相似的一个方法，也是Thread对象提供的一个静态方法，它可以让当前执行分线程暂停，但是不会阻塞该线程，只是将该线程转入就绪状态。很有可能当某个线程调用 了yield()方法暂停之后，线程调度器又将其调度出来重新执行。\n当某个线程调用了yield(),只有优先级与当前线程相同或者优先级比当前线程高的处于就绪状态的线程才会得到执行机会。" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="sleep()方法和yield()方法区别如下：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、sleep线程暂停后会给其他线程执行机会不会理会其他线程的优先级；但yield()方法只会给优先级和自己相同或者比自己高的线程执行机会\n2、sleep()方法会将线程转入阻塞状态，直到经过阻塞时间才会转入就绪状态；yield()方法不会让线程进去阻塞状态只是强制进去就绪状态\n3、sleep()方法生命抛出了InterruptedExcep异常，所以调用sleep()的时候需要捕捉或显示声明抛出改异常；yield()方法没有声明抛出任何异常\n4、sleep()方法比yeild()方法有更好的可移植性，通常不建议使用yield()来控制并发线程的执行。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="线程的优先级" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="优先级高的线程有更多的执行机会\n每个线程默认的优先级都与创建它的父线程相同，默认情况下main线程具有普通优先级，由main线程创建的子线程也拥有默认优先级" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Thread类提供了setPriority(int newPriority)、getPriority()方法来设置和返回指定线程优先级。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="setPriority(int newPriority)的参数可以是一个整数范围在1~10,也可以是系统提供的三个静态常量\n1、MAX_PRIORITY:值是10 \n2、MIN_PRIORITY:值是1\n3、NORM_PRIORITY:值是5" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="尽量使用系统提供的静态常量设置线程的优先级来保证代码的可移植性。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同步代码块" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="synchronized(obj)\n{\n...	\n//此处的代码就是同步代码块\n}" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="上面语法格式中synchronized后括号里面的(obj)就是同步监视器，上面代码的含义是：线程开始执行同步代码块之前必须先获得对同步监视器的锁定" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="任何时刻只能有一个线程可以获得对同步监视器的锁定，同步代码块执行完成后线程会释放对同步监视器的锁定" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="java允许使用任何对象作为同步监视器，但同步监视器的作用是阻止两个线程对同一个共享资源进行并发访问，因此通常使用可能被并发访问的共享资源充当同步监视器。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同步方法" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="同步方法就是使用synchronized关键字修饰的方法，对于使用synchronized关键字修饰的实例方法(非static方法)，无需显式指定同步监视器，同步方法的同步监视器是this，也就是调用该方法的对象。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="使用同步方法可以非常方便的实现线程安全的类，线程安全的类具有如下特征：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、该类的对象可以被多个线程安全的访问\n2、每个线程调用该对象的任意方法后，都将得到正确的结果\n3、每个线程调用该对象的任意方法后，该对象的状态依然保持合理状态" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="不可变类总是线程安全的，因为它的对象状态不能被改变\n可变类需要额外的方法来保证其线程安全，将可变类的可变变量的修改方法写成同步方法来保证其线程安全。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="synchronized关键字可以修饰方法和代码块，但是不能修饰构造器和成员变量等。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="可变类的线程安全是以降低运行效率作为代价的，所以：\n不要对线程安全类的所有方法都进行同步，只对那些会改变竞争资源的方法进行同步\n如果可变类有单线程和多线程两种运行环境，可以为这个类提供线程不安全和线程安全两种版本，单线程使用线程不安全版本保证效率，多线程使用线程安全版本。例如 JDK提供的StringBuilder和StringBuffer" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="释放同步监视器的锁定" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="程序无法显式的释放同步监视器的锁定，在下面的情况下，程序会自动释放同步监视器的锁定" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、当前线程的同步代码块或同步方法执行结束\n2、当前线程在同步代码块或同步方法执行中遇到了 break 、return终止了代码块或该方法的执行\n3、出现了未处理Error或Exception终止了代码块或该方法的执行\n4、程序执行了同步监视器的wait()方法，则当前程序暂停，并释放同步监视器" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="在下面情况下，线程不会释放同步监视器" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、程序调用sleep()、yield()方法来暂停当前程序\n2、其他线程调用该线程的 suspend()方法来挂起线程" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同步锁 java5开始提供" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="通过显式定义同步锁对象来实现同步，同步锁由Lock对象充当" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Lock提供了更广泛的锁定操作，更加灵活，可以具有差别很大的属性，并且支持多个相关的Condition" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Lock是控制多个线程对资源共享的工具。通常锁提供了对共享资源的独占，每次只能有一个线程对Lock对象加锁，线程开始访问共享资源之前需要先获得Lock对象" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="某些锁允许对资源并发访问，如 ReadWriteLock。Lock、ReadWriteLock是java1.5提供的两个接口，并为Lock提供了ReentrantLock（可重入锁）实现类，为ReadWriteLock提供了 ReentrantReadWriteLock" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Java 8新增了一个StampedLock类大多数情况下可以用来替代传统的ReentrantReadWriteLock。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="ReentrantReadWriteLock为读写操作提供了三种加锁模式：Writing、ReadingOptimistic、Reading" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="ReentrantLock锁具有可重入性，也就是说一个线程可以对已加锁的ReentrantLock锁再次加锁，ReentrantLock对象会维持一个计数器来追踪lock()方法的嵌套调用，线程每次调用lock()后必须显示的电泳unlock(),所以一段被锁保护的方法可以调用另一个被相同锁保护的方法。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="传统的线程通信" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="借助于Object类的wait()、notify()、notifyAll()方法,这三个方法必须由同步监视器对象来调用。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="可以分成以下两种情况：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="对于使用字段synchronized修饰的同步方法，因为该类的默认实例（this）就是同步监视器。所以可以在同步监视器里直接调用这三个方法。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="对于使用synchronized修饰的同步代码块，同步监视器是synchronized字段后面的对象，所以必须使用对象来调用这三个方法。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="这三个方法的解释如下：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、wait():导致当前线程等待，直到其他线程调用该监视器的notify()方法或者notifyAll()方法，来唤醒改线程。（wait()可以添加时间参数，在等待指定时间后直接唤醒）调用wait()方法的当前线程会释放对改同步对象的锁定" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、notify():唤醒在此同步监视器上等待的单个线程。如果所有线程都在此同步监视器上等待。则随机唤醒一个线程。只有当前线程放弃对该同步监视器的锁定后（使用wait()方法），才可以执行被唤醒的线程。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="3、notufyAll():唤醒改同步监视器所有等待的线程，只有当前线程放弃对该同步监视器的锁定后，才可以执行被唤醒的线程。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用Condition 控制线程通信" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="当线程调用了Lock对象来保证同步的时候，Java提供了一个Condition类来保持协调，使用Condition可以让那些已经得到Lock对象却无法执行的线程释放Lock对象，Condition也可与唤醒其他处于等待的线程。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Condition对象实例被绑定在一个Lock对象，要获得特定Lock实例的Condition实例，调用Lock对象的newCondition()方法就可以。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Condition类提供了以下三个方法。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、await():类似于隐式同步监视器上的wait()方法，导致当前线程等待，直到其他线程调用该Condition的signal()方法或signalAll()方法来唤醒该线程。该await()方法有更多的变体，如long awaitNanos(long nanosTimeout)、void awaitUninterruptibly()、awaitUntil(Date  deadline)等" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、signal():唤醒在此Lock对象上等待的单个线程。如果所有线程都在该Lock对象上等待，则会随机唤醒其中一个线程。只有当前线程放弃对该Lock对象的锁定后，才可以执行被唤醒的线程" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="3、signalALL():唤醒在此Lock对象上等待的所有线程。只有当前线程放弃对该Lock对象的锁定后，才可以执行被唤醒的线程。" />
+
+            <View
+                style="@style/horizontalLine_1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用阻塞队列(BlockingQueue)控制线程通信" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="java5提供了一个BlockingQueue接口，虽然也是Queue的接口但是它的主要用途不是容器，而是作为线程同步的工具。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="BlockingQueue具有两个特征：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、当生产者线程试图向BlockingQueue中放入元素时，如果该队列已满，则该线程被阻塞。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、当消费者线程试图从BlockingQueue中取出元素的时候，如果该队列为空，则该线程阻塞" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="程序的两个线程通过交替的向BlockingQueue中放入元素、取出元素，可以很好的控制线程的通信。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="BlockingQueue提供如下两个支持阻塞的方法：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="1、put(E  e):尝试把E元素放入BlockingQueue中，如果该队列的元素已满，则阻塞改线程。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="2、take()：尝试从BlockingQueue的头部取出元素，如果该队列元素已空，则阻塞改线程" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="BlockingQueue继承了Queue接口也可以使用Queue里面的方法（这里不做介绍）" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

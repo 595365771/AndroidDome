@@ -23,6 +23,12 @@
         <activity
             android:name="com.blackcat.example.ui.thread.ThreadOneActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.blackcat.example.ui.thread.ThreadTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.blackcat.example.ui.thread.ThreadThreeActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

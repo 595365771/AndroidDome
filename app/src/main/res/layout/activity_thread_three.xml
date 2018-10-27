@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:padding="10dp"
+            tools:context="com.blackcat.example.ui.touchevent.TouchEventActivity">
+
+            <TextView
+                style="@style/normal_333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="子线程进行UI操作" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="在访问UI的时候，ViewRoot会去检查当前是哪个线程访问的UI，如果不是UI线程，那就会抛出如下异常：" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.\nat android.view.ViewRootImpl.checkThread(ViewRootImpl.java:6556)\nat android.view.ViewRootImpl.requestLayout(ViewRootImpl.java:907)" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="ViewRootImpl.checkThread用来检查当前访问UI的线程是不是UI线程" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="ViewRootImpl的创建在onResume方法回调之后，我们在onCreate方法中创建了子线程并访问UI，在那个时刻，ViewRootImpl是没有创建的，无法用checkThread()检测当前线程是否是UI线程，所以程序没有崩溃一样能跑起来。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="但是ViewRootImpl创建的过程也是需要时间的,这取决去你的设备性能，也就是说如果我们在onResume()里面开启子线程去进行UI操作也是有可能通过运行的,所以写测试Dome的时候让进行UI操作的子线程sleep(10000)后进行UI操作就会报出异常了。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="也就是说如果没有其他的措施，当程序创建了ViewRootImpl之后，可以执行checkThread方法检查当前线程，这时候再到子线程里面进行UI操作就会报出我们常见的异常。" />
+
+            <TextView
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="深入点是因为ViewRootImpl在主线程中创建，所以我们要在主线程中更新UI。同理，如果ViewRootImpl在子线程中创建的话，那么也可以在子线程中更新UI，也就是说在哪里更新UI和ViewRootImpl在哪里创建是关联的。默认ViewRootImpl在主线程中创建" />
+
+            <Button
+                android:id="@+id/btn_ui"
+                style="@style/normal_333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="Button" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
