@@ -1,4 +1,4 @@
-package com.blackcat.example.ui.thread;
+package com.blackcat.example.ui.thread.chlid;
 
 import com.blackcat.example.utils.DebugUtil;
 

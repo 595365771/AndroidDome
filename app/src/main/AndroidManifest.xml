@@ -21,7 +21,7 @@
             android:name="com.blackcat.example.ui.touchevent.TouchEventActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.blackcat.example.ui.thread.ThreadActivity"
+            android:name="com.blackcat.example.ui.thread.ThreadOneActivity"
             android:screenOrientation="portrait" />
 
     </application>
