@@ -29,7 +29,10 @@
         <activity
             android:name="com.blackcat.example.ui.thread.ThreadThreeActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name="com.blackcat.example.ui.service.ServiceOneActivity"
+            android:screenOrientation="portrait" />
+       <service android:name="com.blackcat.example.service.ServiceTest"/>
     </application>
 
 </manifest>

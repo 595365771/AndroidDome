@@ -7,6 +7,7 @@ import com.blackcat.example.base.BaseActivity;
 import com.blackcat.example.base.baseadapter.OnItemClickListener;
 import com.blackcat.example.base.baseadapter.setting.DividerListItemDecoration;
 import com.blackcat.example.databinding.ActivityMainBinding;
+import com.blackcat.example.ui.service.ServiceOneActivity;
 import com.blackcat.example.ui.thread.ThreadOneActivity;
 import com.blackcat.example.ui.thread.ThreadThreeActivity;
 import com.blackcat.example.ui.thread.ThreadTwoActivity;
@@ -53,6 +54,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                         break;
                     case 3:
                         turnToNextActivity(ThreadThreeActivity.class);
+                        break;
+                    case 4:
+                        turnToNextActivity(ServiceOneActivity.class);
                         break;
                 }
 
