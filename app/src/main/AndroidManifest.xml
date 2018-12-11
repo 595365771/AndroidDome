@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.blackcat.example">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name="com.blackcat.example.app.BlackApplication"
+        android:name=".app.BlackApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,21 +20,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.blackcat.example.ui.touchevent.TouchEventActivity"
+            android:name=".ui.touchevent.TouchEventActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.blackcat.example.ui.thread.ThreadOneActivity"
+            android:name=".ui.thread.ThreadOneActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.blackcat.example.ui.thread.ThreadTwoActivity"
+            android:name=".ui.thread.ThreadTwoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.blackcat.example.ui.thread.ThreadThreeActivity"
+            android:name=".ui.thread.ThreadThreeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.blackcat.example.ui.service.ServiceOneActivity"
+            android:name=".ui.service.ServiceOneActivity"
             android:screenOrientation="portrait" />
-       <service android:name="com.blackcat.example.service.ServiceTest"/>
+
+        <service android:name=".service.ServiceTest" />
+        <service android:name=".service.IntentServiceTest" />
+        <service android:name=".service.BindServiceTest" />
+
+        <activity android:name=".ui.okhttp.OkhttpActivity" />
+        <activity android:name=".ui.retrofit.RetrofitActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,24 @@
             android:layout_height="wrap_content"
             android:text="Stop Service" />
 
+        <Button
+            android:id="@+id/button3_stop_intentservice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stop Intentservice" />
+
+        <Button
+            android:id="@+id/button4_bind_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bind Service" />
+
+        <Button
+            android:id="@+id/button5_unbind_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="unbind Service" />
+
     </LinearLayout>
 
 
