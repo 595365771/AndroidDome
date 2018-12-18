@@ -13,11 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.touchevent.TouchEventActivity"
@@ -39,8 +35,17 @@
         <service android:name=".service.IntentServiceTest" />
         <service android:name=".service.BindServiceTest" />
 
-        <activity android:name=".ui.okhttp.OkhttpActivity" />
-        <activity android:name=".ui.retrofit.RetrofitActivity"></activity>
+        <activity android:name=".ui.okhttp.OkhttpActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.retrofit.RetrofitActivity" />
+        <activity android:name=".ui.proxy2.Proxy2Activity">
+
+        </activity>
     </application>
 
 </manifest>

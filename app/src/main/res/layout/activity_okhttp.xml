@@ -23,5 +23,25 @@
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
             android:text="OKHTTP_POST" />
+
+        <Button
+            android:id="@+id/btn_wsopen"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="OKHTTP_WSOPEN" />
+
+        <Button
+            android:id="@+id/btn_wssend"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="OKHTTP_WSSEND" />
+        <Button
+            android:id="@+id/btn_wsclose"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="OKHTTP_WSCLOSE" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

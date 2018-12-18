@@ -25,7 +25,8 @@ import okhttp3.WebSocketListener;
 import okio.ByteString;
 
 public class OkhttpActivity extends AppCompatActivity {
-    private Button btn_okget, btn_okpost;
+    private Button btn_okget, btn_okpost, btn_wsopen, btn_wssend, btn_wsclose;
+    private WebSocket webSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,9 @@ public class OkhttpActivity extends AppCompatActivity {
     private void initView() {
         btn_okget = (Button) findViewById(R.id.btn_okget);
         btn_okpost = (Button) findViewById(R.id.btn_okpost);
+        btn_wsopen = (Button) findViewById(R.id.btn_wsopen);
+        btn_wssend = (Button) findViewById(R.id.btn_wssend);
+        btn_wsclose = (Button) findViewById(R.id.btn_wsclose);
     }
 
     /**
@@ -69,40 +73,65 @@ public class OkhttpActivity extends AppCompatActivity {
 
             }
         });
+        btn_wsopen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connect();
+            }
+        });
+        btn_wssend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webSocket.send("6666667");
+            }
+        });
+        btn_wsclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webSocket.close(1000, null);
+            }
+        });
     }
 
     /**
+     * ws://192.168.1.210:8283
      * OkHttp发起WebSocket请求
+     * ws://echo.websocket.org
      */
     private void connect() {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("www.webSocket.com")
+                .url("ws://echo.websocket.org")
                 .build();
         EchoWebSocketListener listener = new EchoWebSocketListener();
-        client.newWebSocket(request, listener);
+        webSocket = client.newWebSocket(request, listener);
+        webSocket.cancel();
         client.dispatcher().executorService().shutdown();
+//            //OkHttp会调用自己的后台来发送数据，所以这里不会阻塞当前线程
+//            webSocket.send("hello word");
+//            webSocket.send("welcome");
+//            webSocket.send(ByteString.decodeHex("abcd"));
+//            //发送消息完成
+//            webSocket.close(1000, "再见");
     }
 
     private final class EchoWebSocketListener extends WebSocketListener {
         /**
          * 客户端在和远程的服务端建立连接时的回调
+         *
          * @param webSocket
          * @param response
          */
         @Override
         public void onOpen(WebSocket webSocket, Response response) {
             super.onOpen(webSocket, response);
-            //OkHttp会调用自己的后台来发送数据，所以这里不会阻塞当前线程
-            webSocket.send("hello word");
-            webSocket.send("welcome");
-            webSocket.send(ByteString.decodeHex("abcd"));
-            //发送消息完成
-            webSocket.close(1000,"再见");
+            DebugUtil.debug("-------onOpen");
+
         }
 
         /**
          * 接收字符串格式的信息
+         *
          * @param webSocket
          * @param text
          */
@@ -110,9 +139,12 @@ public class OkhttpActivity extends AppCompatActivity {
         public void onMessage(WebSocket webSocket, String text) {
             super.onMessage(webSocket, text);
             //onMessage 方法运行在后台线程中，如果和主线程交互需要使用Handler
+            DebugUtil.debug("-------onMessage---" + text);
         }
+
         /**
          * 接收字节流格式的信息
+         *
          * @param webSocket
          * @param bytes
          */
@@ -120,10 +152,12 @@ public class OkhttpActivity extends AppCompatActivity {
         public void onMessage(WebSocket webSocket, ByteString bytes) {
             super.onMessage(webSocket, bytes);
             //onMessage 方法运行在后台线程中，如果和主线程交互需要使用Handler
+            DebugUtil.debug("-------onMessageByteString---" + String.valueOf(bytes));
         }
 
         /**
          * 连接失败时的回调
+         *
          * @param webSocket
          * @param t
          * @param response
@@ -131,10 +165,13 @@ public class OkhttpActivity extends AppCompatActivity {
         @Override
         public void onFailure(WebSocket webSocket, Throwable t, Response response) {
             super.onFailure(webSocket, t, response);
+            DebugUtil.debug("-------onFailure---");
+            t.printStackTrace();
         }
 
         /**
          * 准备关闭WebSocket连接时的回调
+         *
          * @param webSocket
          * @param code
          * @param reason
@@ -142,11 +179,13 @@ public class OkhttpActivity extends AppCompatActivity {
         @Override
         public void onClosing(WebSocket webSocket, int code, String reason) {
             super.onClosing(webSocket, code, reason);
-            webSocket.close(1000,null);
+            DebugUtil.debug("-------onClosing---");
+            webSocket.close(1000, null);
         }
 
         /**
          * 连接已经被关闭释放后的回调
+         *
          * @param webSocket
          * @param code
          * @param reason
@@ -154,6 +193,7 @@ public class OkhttpActivity extends AppCompatActivity {
         @Override
         public void onClosed(WebSocket webSocket, int code, String reason) {
             super.onClosed(webSocket, code, reason);
+            DebugUtil.debug("-------onClosed---");
         }
     }
 
@@ -228,35 +268,36 @@ public class OkhttpActivity extends AppCompatActivity {
          * OkHttp发送同步请求后会进入阻塞状态，直到收到响应。
          */
     }
+
     /**
      * OkHttp断点续传
      */
-    public void doBreakDownloadOkHttp(){
+    public void doBreakDownloadOkHttp() {
         //代表已经下载的文件字节大小
-        long  downloadLength=0;
+        long downloadLength = 0;
         //代表服务器文件下载地址
-        String downloadUrl="";
+        String downloadUrl = "";
         InputStream is;
         RandomAccessFile savedFile;
-        OkHttpClient client =new OkHttpClient();
-        Request request =new Request.Builder()
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
                 //添加RANGE头部信息
-                .addHeader("RANGE","bytes="+downloadLength+"-")
+                .addHeader("RANGE", "bytes=" + downloadLength + "-")
                 .url(downloadUrl)
                 .build();
         try {
             //发送同步请求
             Response response = client.newCall(request).execute();
-            if(response!= null){
-                is=response.body().byteStream();
-                savedFile=new RandomAccessFile("文件名","rw");
+            if (response != null) {
+                is = response.body().byteStream();
+                savedFile = new RandomAccessFile("文件名", "rw");
                 savedFile.seek(downloadLength);
-                byte [] b =new byte[1024];
-                int total =0;
+                byte[] b = new byte[1024];
+                int total = 0;
                 int len;
-                while ((len = is.read(b))!=-1){
-                    total+=len;
-                    savedFile.write(b,0,len);
+                while ((len = is.read(b)) != -1) {
+                    total += len;
+                    savedFile.write(b, 0, len);
                 }
 
             }
