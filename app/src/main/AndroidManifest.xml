@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".ui.touchevent.TouchEventActivity"
             android:screenOrientation="portrait" />
@@ -35,16 +33,17 @@
         <service android:name=".service.IntentServiceTest" />
         <service android:name=".service.BindServiceTest" />
 
-        <activity android:name=".ui.okhttp.OkhttpActivity" >
+        <activity android:name=".ui.okhttp.OkhttpActivity">
+
+        </activity>
+        <activity android:name=".ui.retrofit.RetrofitActivity" />
+        <activity android:name=".ui.proxy2.Proxy2Activity"></activity>
+        <activity android:name=".ui.proxy3.Proxy3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.retrofit.RetrofitActivity" />
-        <activity android:name=".ui.proxy2.Proxy2Activity">
-
         </activity>
     </application>
 
