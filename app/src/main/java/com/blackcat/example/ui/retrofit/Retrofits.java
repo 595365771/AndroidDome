@@ -24,10 +24,12 @@ public class Retrofits {
         Call call = myInterface.getCall();
 
         try {
+            //同步请求
             Response response= call.execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //异步请求
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
