@@ -13,6 +13,7 @@ import com.blackcat.example.utils.DebugUtil;
  */
 
 public class TouchEventView extends View {
+
     public TouchEventView(Context context) {
         super(context);
     }
@@ -50,6 +51,7 @@ public class TouchEventView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 DebugUtil.error("onTouchEventV: ======ACTION_DOWN");
@@ -70,4 +72,6 @@ public class TouchEventView extends View {
         }
         return super.onTouchEvent(event);
     }
+
+
 }

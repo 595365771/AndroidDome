@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.touchevent.TouchEventActivity"
             android:screenOrientation="portrait" />
@@ -29,22 +29,36 @@
             android:name=".ui.service.ServiceOneActivity"
             android:screenOrientation="portrait" />
 
-        <service android:name=".service.ServiceTest" />
-        <service android:name=".service.IntentServiceTest" />
-        <service android:name=".service.BindServiceTest" />
+        <service
+            android:name=".service.ServiceTest"
+            android:screenOrientation="portrait" />
+        <service
+            android:name=".service.IntentServiceTest"
+            android:screenOrientation="portrait" />
+        <service
+            android:name=".service.BindServiceTest"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.okhttp.OkhttpActivity">
-
-        </activity>
-        <activity android:name=".ui.retrofit.RetrofitActivity" />
-        <activity android:name=".ui.proxy2.Proxy2Activity"></activity>
-        <activity android:name=".ui.proxy3.Proxy3Activity">
+        <activity
+            android:name=".ui.okhttp.OkhttpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.retrofit.RetrofitActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.proxy2.Proxy2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.proxy3.Proxy3Activity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.okhttp.NvWebSocketActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.GestureDetector.GestureDetectorActivity"></activity>
     </application>
 
 </manifest>

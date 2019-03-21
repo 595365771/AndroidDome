@@ -33,7 +33,9 @@ public class OkhttpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_okhttp);
         initView();
+
         initListener();
+
     }
 
     private void initView() {
@@ -47,7 +49,7 @@ public class OkhttpActivity extends AppCompatActivity {
     /**
      * 创建一个简单的基础版OkHttpClient。这种创建方式也在OkHttpClient中创建了一个Builder对象只不过是系统默认的。
      */
-//    OkHttpClient client = new OkHttpClient();
+    //    OkHttpClient client = new OkHttpClient();
     /**
      * Builder 用来构造比较复杂的OkHttpClient类，它是OkHttpClient的一个静态内部类，构造方法的第一行创建了Dispatch分发器类，Dispatch分发器类会接收到我们同步和异步的请求队列然后根据相应的条件进行分发。
      * <p>

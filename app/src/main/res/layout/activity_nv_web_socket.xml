@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.okhttp.NvWebSocketActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <Button
+            android:id="@+id/btn_wsopen"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:onClick="wsOpen"
+            android:text="NV_WSOPEN" />
+
+        <Button
+            android:id="@+id/btn_wssend"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:onClick="wsSend"
+            android:text="NV_WSSEND" />
+        <Button
+            android:id="@+id/btn_wsclose"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:onClick="wsClose"
+            android:layout_marginTop="20dp"
+            android:text="NV_WSCLOSE" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

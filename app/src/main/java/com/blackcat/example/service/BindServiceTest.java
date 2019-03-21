@@ -15,10 +15,12 @@ import com.blackcat.example.utils.DebugUtil;
 public class BindServiceTest extends Service {
     private BinderTest binderTest = new BinderTest();
 
+
     /**
      * 构造方法
      */
     public BindServiceTest() {
+
         super();
     }
 
