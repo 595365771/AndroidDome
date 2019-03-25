@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ui.thread.FollowActivity">
+
+    <com.blackcat.example.view.LayoutFollowView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="lFVClick"
+        android:text="LayoutFollowView" />
+
+    <com.blackcat.example.view.OffsetFollowView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="oFVClick"
+        android:text="OffsetFollowView" />
+
+
+    <com.blackcat.example.view.OffsetFollowView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="lPFVClick"
+        android:text="LayoutParamsFollowView" />
+
+
+    <com.blackcat.example.view.TranslateView
+        android:id="@+id/v_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="tVClick"
+        android:text="TranslateView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="tVOClick"
+        android:text="属性动画" />
+
+    <com.blackcat.example.view.ScrollerFollowView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:onClick="sFOClick"
+        android:text="ScrollerFollowView"
+        />
+
+</LinearLayout>

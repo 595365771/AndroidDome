@@ -15,7 +15,13 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.touchevent.TouchEventActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.thread.ThreadOneActivity"
             android:screenOrientation="portrait" />
@@ -51,14 +57,14 @@
         <activity
             android:name=".ui.proxy3.Proxy3Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.okhttp.NvWebSocketActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ui.okhttp.NvWebSocketActivity"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".ui.GestureDetector.GestureDetectorActivity" />
+
+        <activity android:name=".ui.thread.FollowActivity">
+
         </activity>
-        <activity android:name=".ui.GestureDetector.GestureDetectorActivity"></activity>
+
     </application>
 
 </manifest>

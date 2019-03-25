@@ -46,9 +46,10 @@ public class TouchEventView extends View {
                 break;
 
         }
-        return super.dispatchTouchEvent(event);
+        DebugUtil.error("super.dispatchTouchEvent(ev)=="+super.dispatchTouchEvent(event));
+        return !super.dispatchTouchEvent(event);
+//        return super.dispatchTouchEvent(event);
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -72,6 +73,5 @@ public class TouchEventView extends View {
         }
         return super.onTouchEvent(event);
     }
-
 
 }

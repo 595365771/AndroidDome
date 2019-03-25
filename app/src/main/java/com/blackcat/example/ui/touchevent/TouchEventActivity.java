@@ -48,6 +48,7 @@ public class TouchEventActivity extends BaseActivity<ActivityTouchEventBinding> 
                 break;
 
         }
+
         return super.dispatchTouchEvent(ev);
     }
     @Override
