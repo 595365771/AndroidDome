@@ -1,4 +1,4 @@
-package com.blackcat.example.ui.GestureDetector;
+package com.blackcat.example.ui.gestureDetector;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;

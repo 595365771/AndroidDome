@@ -1,10 +1,9 @@
-package com.blackcat.example.ui.GestureDetector;
+package com.blackcat.example.ui.gestureDetector;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.ImageView;
 
 import com.blackcat.example.R;
 
