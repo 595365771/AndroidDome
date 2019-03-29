@@ -68,6 +68,20 @@
             android:background="@color/colorRed"
             android:scaleType="centerCrop"
             android:src="@drawable/touch_event_u_img" />
+        <com.blackcat.example.view.RoundRectView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorRed"
+            android:scaleType="centerCrop"
+            android:src="@drawable/touch_event_u_img" />
+        <com.blackcat.example.view.ArcView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorRed"
+            android:scaleType="centerCrop"
+            android:src="@drawable/touch_event_u_img" />
 
 
     </LinearLayout>
