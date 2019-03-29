@@ -15,8 +15,8 @@ import com.blackcat.example.R;
  * 绘制自定义图形，心形
  */
 public class PathView extends android.support.v7.widget.AppCompatImageView {
-   //创建一个画笔Paint开启防锯齿
-   Paint paint =new Paint(Paint.ANTI_ALIAS_FLAG);
+    //创建一个画笔Paint开启防锯齿
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public PathView(Context context) {
         super(context);
@@ -41,16 +41,19 @@ public class PathView extends android.support.v7.widget.AppCompatImageView {
         paint.setStyle(Paint.Style.STROKE);
         //设置画笔宽度
         paint.setStrokeWidth(4);
-        Path path =new Path();
+        Path path = new Path();
         //添加一个扇形
         path.addArc(200, 200, 400, 400, -225, 225);
         //从上个扇形结束的位置再画一个扇形
         path.arcTo(400, 200, 600, 400, -180, 225, false);
-        //从第二个扇形结束的位置在画一根线，X和Y是线结束的位置
+        //从第二个扇形结束的位置在画一根线，X和Y是线结束的位置 path.lineTo绝对位置
         path.lineTo(400, 542);
         //从上一根线结束的位置再画一根线，X和Y是线结束的位置，也是第一个扇形的起始位置
-        path.lineTo(228, 372);
-        canvas.drawPath(path,paint);
+        //path.rLineTo(228, 372);
+
+        //path.rLineTo相对位置（相对于上一个图形结束的点的位置）
+        path.rLineTo(-172, -170);
+        canvas.drawPath(path, paint);
 
     }
 }
