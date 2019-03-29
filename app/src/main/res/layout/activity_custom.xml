@@ -83,6 +83,12 @@
             android:scaleType="centerCrop"
             android:src="@drawable/touch_event_u_img" />
 
-
+        <com.blackcat.example.view.PathView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorRed"
+        android:scaleType="centerCrop"
+        android:src="@drawable/touch_event_u_img" />
     </LinearLayout>
 </ScrollView>

@@ -3,6 +3,8 @@ package com.blackcat.example.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
 import com.blackcat.example.R;
@@ -28,6 +30,7 @@ public class ArcView extends android.support.v7.widget.AppCompatImageView {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
